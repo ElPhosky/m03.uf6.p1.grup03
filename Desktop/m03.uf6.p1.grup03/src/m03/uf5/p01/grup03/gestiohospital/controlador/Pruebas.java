@@ -8,7 +8,6 @@ public class Pruebas {
         String numSegSocial="";
         String nif="";
         String telefon="";
-        //Persona persona = new Persona(nom, cognom1, cognom2,numSegSocial, nif,telefon); No se puede instanciar clase abstracta.
     }
     
 }
