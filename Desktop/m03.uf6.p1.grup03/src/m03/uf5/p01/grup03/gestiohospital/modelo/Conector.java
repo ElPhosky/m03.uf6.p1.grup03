@@ -28,7 +28,9 @@ public class Conector {
     
     public static void main(String[] args) {
         Conector conector = Conector.getConector();
-        conector.getPacientes();
+//        conector.getPacientes();
+//        conector.getMetges();
+        conector.getVisitas();
         
     }
     
@@ -54,6 +56,31 @@ public class Conector {
             Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+    public Object[] getResult(String consulta){
+        Object[] filas = null;            
+        try {
+
+            Connection con = conn.getConexion();
+            ps = con.prepareStatement(consulta);
+            rs = ps.executeQuery();
+            
+            ResultSetMetaData rsMd = rs.getMetaData();
+            int cantidadColumnas = rsMd.getColumnCount();
+            
+            while(rs.next()){
+                filas = new Object[cantidadColumnas];
+                
+                for(int i = 0; i<cantidadColumnas; i++){
+                    filas[i] = rs.getObject(i +1);
+                }
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return filas;
     }
     
     public Object[] getPacientes(){
@@ -82,4 +109,60 @@ public class Conector {
         }
         return filas;
     } 
+        public Object[] getMetges(){
+        Object[] filas = null;            
+        try {
+
+            Connection con = conn.getConexion();
+            String sql = "SELECT nif,telefon,nom, cognom1, cognom2, numSS,"
+                    + "codiPostal,ciutat,carrer,numero,planta,codiCompteCorrent,"
+                    + "numEmpleado,salariMensual FROM metge";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            ResultSetMetaData rsMd = rs.getMetaData();
+            int cantidadColumnas = rsMd.getColumnCount();
+            
+            while(rs.next()){
+                filas = new Object[cantidadColumnas];
+                
+                for(int i = 0; i<cantidadColumnas; i++){
+                    filas[i] = rs.getObject(i +1);
+                    System.out.println(filas[i]);
+                }
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return filas;
+    }
+        public Object[] getVisitas(){
+        Object[] filas = null;            
+        try {
+
+            Connection con = conn.getConexion();
+            String sql = "SELECT idVisita,fecha,codiMalaltia,nifPacient,nifMetge FROM visita";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            ResultSetMetaData rsMd = rs.getMetaData();
+            int cantidadColumnas = rsMd.getColumnCount();
+            
+            while(rs.next()){
+                filas = new Object[cantidadColumnas];
+                
+                for(int i = 0; i<cantidadColumnas; i++){
+                    filas[i] = rs.getObject(i +1);
+                    System.out.println(filas[i]);
+                }
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return filas;
+    }
 }
