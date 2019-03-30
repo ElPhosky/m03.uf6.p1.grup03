@@ -61,10 +61,10 @@ public class MenuControlador extends Controlador{
             rRV = new RadioRegistrarVisitaControlador();
         }
         if(ae.getSource() == m.btnMostrarPaciente){
-            new Pacient().setVisible(true);
+                new Pacient().setVisible(true);    
         }
         if(ae.getSource() == m.btnMostrarMedico){
-            mCM = new MostrarControladorMedico();
+                new Metge().setVisible(true); 
         }
         if(ae.getSource() == m.btnBuscarEnfermedad){
             bEC = new BuscarEnfermedadControlador();

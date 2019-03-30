@@ -18,25 +18,24 @@ import m03.uf5.p01.grup03.gestiohospital.modelo.Conector;
  *
  * @author Rafa
  */
-public class Pacient extends javax.swing.JFrame {
+public class Metge extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Pacient
-     */
-    public Pacient() {
+    public Metge() {
         initComponents();
         DefaultTableModel modelo = new DefaultTableModel();
         codiHistorial.setModel(modelo);
             
-        modelo.addColumn("Nom");
+        modelo.addColumn("NIF");
+        modelo.addColumn("Telèfon");
+        modelo.addColumn("Nombre");
         modelo.addColumn("Cognom");
         modelo.addColumn("2n cognom");
         modelo.addColumn("Num SS");
-        modelo.addColumn("Codi Postal");
-        modelo.addColumn("NIF");
+        modelo.addColumn("Num Empleado");
+        modelo.addColumn("Salari mensual");
                 
         Conector conecta = Conector.getConector();
-        Object[] filas = conecta.getPacientes();
+        Object[] filas = conecta.getMetges();
         modelo.addRow(filas); 
     }
 
@@ -56,20 +55,20 @@ public class Pacient extends javax.swing.JFrame {
 
         codiHistorial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nom Pacient", "Cognom", "2n cognom", "Núm SS", "Codi Postal", "NIF"
+                "NIF", "Telèfon", "Nombre", "Cognom", "2n cognom", "Num SS", "Núm. empleado", "Salari mensual"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {

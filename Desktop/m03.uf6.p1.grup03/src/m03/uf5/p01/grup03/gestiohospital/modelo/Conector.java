@@ -25,15 +25,15 @@ public class Conector {
     private ResultSet rs = null;
     private GestorConexion conn = new GestorConexion();
     private static Conector conector = null;
-    
-    public static void main(String[] args) {
-        Conector conector = Conector.getConector();
-//        conector.getPacientes();
-//        conector.getMetges();
-//        conector.getVisitas();
-       conector.getMalalties();
-        
-    }
+//    
+//    public static void main(String[] args) {
+//        Conector conector = Conector.getConector();
+////        conector.getPacientes();
+////        conector.getMetges();
+////        conector.getVisitas();
+//       conector.getMalalties();
+//        
+//    }
     
     public static Conector getConector(){
         if(conector == null){
@@ -116,7 +116,6 @@ public class Conector {
 
             Connection con = conn.getConexion();
             String sql = "SELECT nif,telefon,nom, cognom1, cognom2, numSS,"
-                    + "codiPostal,ciutat,carrer,numero,planta,codiCompteCorrent,"
                     + "numEmpleado,salariMensual FROM metge";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
