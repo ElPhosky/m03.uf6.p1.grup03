@@ -12,6 +12,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 import m03.uf5.p01.grup03.gestiohospital.controlador.GestorConexion;
+import m03.uf5.p01.grup03.gestiohospital.modelo.Conector;
 
 /**
  *
@@ -24,42 +25,19 @@ public class Pacient extends javax.swing.JFrame {
      */
     public Pacient() {
         initComponents();
-        
-        try{
-            DefaultTableModel modelo = new DefaultTableModel();
-            codiHistorial.setModel(modelo);
+        DefaultTableModel modelo = new DefaultTableModel();
+        codiHistorial.setModel(modelo);
             
-            PreparedStatement ps = null;
-            ResultSet rs = null;
-            GestorConexion conn = new GestorConexion();
-            Connection con = conn.getConexion();
-            
-            String sql = "SELECT nom, cognom1, cognom2, nif, numSS, codiPostal FROM pacient";
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            
-            ResultSetMetaData rsMd = rs.getMetaData();
-            int cantidadColumnas = rsMd.getColumnCount();
-            
-            modelo.addColumn("Nom");
-            modelo.addColumn("Cognom");
-            modelo.addColumn("2n cognom");
-            modelo.addColumn("Num SS");
-            modelo.addColumn("Codi Postal");
-            modelo.addColumn("NIF");
-            
-            while(rs.next()){
-                Object[] filas = new Object[cantidadColumnas];
+        modelo.addColumn("Nom");
+        modelo.addColumn("Cognom");
+        modelo.addColumn("2n cognom");
+        modelo.addColumn("Num SS");
+        modelo.addColumn("Codi Postal");
+        modelo.addColumn("NIF");
                 
-                for(int i = 0; i<cantidadColumnas; i++){
-                    filas[i] = rs.getObject(i +1);
-                }
-                modelo.addRow(filas);
-            }
-            
-        }catch(SQLException ex){
-            System.err.println(ex.toString());
-        }
+        Conector conecta = Conector.getConector();
+        Object[] filas = conecta.getPacientes();
+        modelo.addRow(filas); 
     }
 
     /**
