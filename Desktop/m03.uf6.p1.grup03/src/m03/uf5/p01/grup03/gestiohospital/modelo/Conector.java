@@ -30,7 +30,8 @@ public class Conector {
         Conector conector = Conector.getConector();
 //        conector.getPacientes();
 //        conector.getMetges();
-        conector.getVisitas();
+//        conector.getVisitas();
+       conector.getMalalties();
         
     }
     
@@ -165,4 +166,33 @@ public class Conector {
         }
         return filas;
     }
+        public Object[] getMalalties(){
+        Object[] filas = null;            
+        try {
+
+            Connection con = conn.getConexion();
+            String sql = "SELECT codiMalaltia,nomMalaltia,causaBaixa,tractament,duradaTractament FROM malaltia";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            ResultSetMetaData rsMd = rs.getMetaData();
+            int cantidadColumnas = rsMd.getColumnCount();
+            
+            while(rs.next()){
+                filas = new Object[cantidadColumnas];
+                
+                for(int i = 0; i<cantidadColumnas; i++){
+                    filas[i] = rs.getObject(i +1);
+                    System.out.println(filas[i]);
+                }
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return filas;
+    }
+        
+        
 }
