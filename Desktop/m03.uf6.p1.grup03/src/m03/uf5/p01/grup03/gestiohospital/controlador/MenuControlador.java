@@ -9,14 +9,15 @@ import m03.uf5.p01.grup03.gestiohospital.vista.*;
 
 public class MenuControlador extends Controlador{
     
-    public static Creacion control = null;
+    
+    // public static Creacion control = null;
     
         public static void main(String[] args) {
-            control.creaAdrecayHospital();
+        /*    control.creaAdrecayHospital();
             control.leeMalaltia();
             control.leeMetge();
             control.leePacientes();
-            control.leeVisites();
+            control.leeVisites(); */
         javax.swing.SwingUtilities.invokeLater(new Runnable(){
             @Override
             public void run(){

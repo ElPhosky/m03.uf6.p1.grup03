@@ -3,7 +3,7 @@ package m03.uf5.p01.grup03.gestiohospital.controlador;
 import java.awt.event.ActionEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import static m03.uf5.p01.grup03.gestiohospital.controlador.MenuControlador.control;
+//import static m03.uf5.p01.grup03.gestiohospital.controlador.MenuControlador.control;
 
 import m03.uf5.p01.grup03.gestiohospital.modelo.*;
 import m03.uf5.p01.grup03.gestiohospital.vista.*;
@@ -91,7 +91,7 @@ public class MenuAnyadirMetgeControlador extends Controlador {
             if (temp) {
                 Adreca adreca = new Adreca(ciutat, cp, carrer, Integer.parseInt(numero), planta, Integer.parseInt(porta));
                 Metge metge = new Metge(nombre, apellido1, apellido2, NSS, DNI, Integer.parseInt(numEmpleat), Integer.parseInt(salariMensual), codiCompteCorrent, Telefon, adreca);
-                control.hospitalPrueba.afegirMetge(metge);
+                //control.hospitalPrueba.afegirMetge(metge);
                 Creacion.escriuMetge(metge);
                 mAM.dispose();
             }else{

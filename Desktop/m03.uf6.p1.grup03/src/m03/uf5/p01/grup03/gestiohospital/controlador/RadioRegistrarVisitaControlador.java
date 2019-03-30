@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import static m03.uf5.p01.grup03.gestiohospital.controlador.MenuControlador.control;
+//import static m03.uf5.p01.grup03.gestiohospital.controlador.MenuControlador.control;
 import m03.uf5.p01.grup03.gestiohospital.modelo.Malaltia;
 import m03.uf5.p01.grup03.gestiohospital.modelo.Metge;
 import m03.uf5.p01.grup03.gestiohospital.modelo.Pacient;
@@ -48,7 +48,7 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
                 Pattern pat = Pattern.compile("\\d{8}[A-HJ-NP-TV-Z]");
                 Matcher mat = pat.matcher(texto);
                 if (mat.find()) {
-                    pacient = control.hospitalPrueba.buscarPacientNif(texto);
+//                    pacient = control.hospitalPrueba.buscarPacientNif(texto);
                     if (pacient.equals(null)) {
                         radioPaciente.lblComprobar.setText("No está registrado.");
                     } else {
@@ -66,7 +66,7 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
                 Pattern pat = Pattern.compile("(66|53|50|[0-4][0-9])-?\\d{8}-?\\d{2}");
                 Matcher mat = pat.matcher(texto);
                 if (mat.find()) {
-                    pacient = control.hospitalPrueba.buscarPacientNumSeg(texto);
+//                    pacient = control.hospitalPrueba.buscarPacientNumSeg(texto);
                     if (pacient.equals(null)) {
                         radioPaciente.lblComprobar.setText("No está registrado.");
                     } else {
@@ -82,7 +82,7 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
              if (radioPaciente.radioHistorial.isSelected() == true) {
                 radioPaciente.lblComprobar.setText("OKKK");
                 try{
-                    pacient = control.hospitalPrueba.buscarPacientCodiHistorial(Integer.parseInt(texto));
+//                    pacient = control.hospitalPrueba.buscarPacientCodiHistorial(Integer.parseInt(texto));
                     if (pacient.equals(null)) {
                         radioPaciente.lblComprobar.setText("No está registrado.");
                     } else {
@@ -110,7 +110,7 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
                 Matcher mat = pat.matcher(texto);
                 if (mat.find()) {
                     radioMedico.lblComprobar.setText("OKKK");
-                    metge = control.hospitalPrueba.buscarMetgeNif(texto);
+//                    metge = control.hospitalPrueba.buscarMetgeNif(texto);
                     if (metge.equals(null)) {
                         radioMedico.lblComprobar.setText("No está registrado.");
                     } else {
@@ -129,7 +129,7 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
                 Matcher mat = pat.matcher(texto);
                 if (mat.find()) {
                     radioMedico.lblComprobar.setText("OKKK");
-                    metge = control.hospitalPrueba.buscarMetgeNumSeg(texto);
+//                    metge = control.hospitalPrueba.buscarMetgeNumSeg(texto);
                     if (metge.equals(null)) {
                         radioMedico.lblComprobar.setText("No está registrado.");
                     } else {
@@ -146,7 +146,7 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
             if (radioMedico.radioHistorial.isSelected() == true) {
                 radioMedico.lblComprobar.setText("OKKK");
                 try{
-                    metge = control.hospitalPrueba.buscarMetgeNumEmpleat(Integer.parseInt(texto));
+//                    metge = control.hospitalPrueba.buscarMetgeNumEmpleat(Integer.parseInt(texto));
                     if (metge.equals(null)) {
                         radioMedico.lblComprobar.setText("No está registrado.");
                     } else {
@@ -170,7 +170,7 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
             String texto = introducirEnf.tfID.getText();
             try{
             int numero = Integer.parseInt(texto);
-            malaltia = control.hospitalPrueba.buscarMalaltiaCodi(numero);
+//            malaltia = control.hospitalPrueba.buscarMalaltiaCodi(numero);
             }catch(NumberFormatException error) {
             introducirEnf.lblComprobar.setText(texto + " no es un número valido");
     }
@@ -179,7 +179,7 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
                     } else {
                         fecha = LocalDateTime.now();
                         visita = new Visita(fecha, metge, malaltia, pacient);
-                        control.escriuVisita(visita);
+//                        control.escriuVisita(visita);
                         introducirEnf.lblComprobar.setText("Visita añadida correctamente.");
                     }
         }

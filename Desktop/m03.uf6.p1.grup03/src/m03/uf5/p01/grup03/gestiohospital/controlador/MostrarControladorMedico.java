@@ -8,7 +8,7 @@ package m03.uf5.p01.grup03.gestiohospital.controlador;
 import java.awt.event.ActionEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import static m03.uf5.p01.grup03.gestiohospital.controlador.MenuControlador.control;
+//import static m03.uf5.p01.grup03.gestiohospital.controlador.MenuControlador.control;
 import m03.uf5.p01.grup03.gestiohospital.modelo.Historial;
 import m03.uf5.p01.grup03.gestiohospital.modelo.Metge;
 import m03.uf5.p01.grup03.gestiohospital.vista.RadioRegistrarVisitaMedico;
@@ -37,14 +37,12 @@ public class MostrarControladorMedico extends Controlador{
                 Pattern pat = Pattern.compile("\\d{8}[A-HJ-NP-TV-Z]");
                 Matcher mat = pat.matcher(texto);
             if (mat.find()) {
-                Metge metge = control.hospitalPrueba.buscarMetgeNif(texto);
+//             Metge metge = control.hospitalPrueba.buscarMetgeNif(texto);
                 
-                radioMedico.lblComprobar.setText(metge.toString());
-                
-                
+//                radioMedico.lblComprobar.setText(metge.toString());
             } else {
                 radioMedico.lblComprobar.setText("No identificado");
-            }
+            } 
             }
             
             //COMPRUEBA NUM SS
@@ -53,9 +51,9 @@ public class MostrarControladorMedico extends Controlador{
             Matcher mat = pat.matcher(texto);
             
             if (mat.find()) {
-                Metge metge =control.hospitalPrueba.buscarMetgeNumSeg(texto);
+//                Metge metge =control.hospitalPrueba.buscarMetgeNumSeg(texto);
                 
-                radioMedico.lblComprobar.setText(metge.toString());
+//                radioMedico.lblComprobar.setText(metge.toString());
                 
                 
             } else {
@@ -65,12 +63,12 @@ public class MostrarControladorMedico extends Controlador{
             
             if(radioMedico.radioHistorial.isSelected()==true){
                 try{
-                Historial cont = control.hospitalPrueba.findHistorial(Integer.parseInt(texto));
+/*                Historial cont = control.hospitalPrueba.findHistorial(Integer.parseInt(texto));
                 if(cont!=null){
                     radioMedico.lblComprobar.setText(cont.toString());
                 }else{
                     radioMedico.lblComprobar.setText("No identificado");
-                }
+                } */
             }catch (NumberFormatException ea){
                 radioMedico.lblComprobar.setText("Error");
                 

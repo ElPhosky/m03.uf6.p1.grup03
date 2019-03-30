@@ -3,7 +3,7 @@ package m03.uf5.p01.grup03.gestiohospital.controlador;
 import java.awt.event.ActionEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import static m03.uf5.p01.grup03.gestiohospital.controlador.MenuControlador.control;
+//import static m03.uf5.p01.grup03.gestiohospital.controlador.MenuControlador.control;
 import m03.uf5.p01.grup03.gestiohospital.modelo.Adreca;
 import m03.uf5.p01.grup03.gestiohospital.modelo.Creacion;
 import m03.uf5.p01.grup03.gestiohospital.modelo.Pacient;
@@ -89,7 +89,7 @@ public class MenuAnyadirPacienteControlador extends Controlador {
             if (temp) {
                 Adreca adreca = new Adreca(ciutat, cp, carrer, Integer.parseInt(numero), planta, Integer.parseInt(porta));
                 Pacient pacient = new Pacient(nombre, apellido1, apellido2, DNI, NSS, Telefon, adreca);
-                control.hospitalPrueba.afegirPacient(pacient);
+//                control.hospitalPrueba.afegirPacient(pacient);
                 Creacion.escriuPacient(pacient);
                 mAP.dispose();
 
