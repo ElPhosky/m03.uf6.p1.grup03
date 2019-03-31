@@ -7,20 +7,21 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import m03.uf5.p01.grup03.gestiohospital.controlador.RadioRegistrarVisitaControlador;
 
-public class IntroducirEnfermedad extends JFrame{
+public class IntroducirEnfermedad extends JFrame {
+
     private RadioRegistrarVisitaControlador controlador;
-    
+
     JLabel lblID = new JLabel("Introduce el ID de la enfermedad: ");
     public JTextField tfID = new JTextField();
     public JButton btnAcceptar = new JButton("Acceptar");
     public JButton btnCancelar = new JButton("Cancelar");
     public JLabel lblComprobar = new JLabel("Comprueba");
     GridLayout iELayout = new GridLayout(0, 2);
-    
+
     public IntroducirEnfermedad(RadioRegistrarVisitaControlador c) {
         super("Añadir enfermedad");
         controlador = c;
-        
+
         this.setLayout(iELayout);
         this.setVisible(true);
         this.setResizable(false);
@@ -32,6 +33,7 @@ public class IntroducirEnfermedad extends JFrame{
         add(btnAcceptar);
         add(btnCancelar);
         add(lblComprobar);
-        
-}   
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+    }
 }

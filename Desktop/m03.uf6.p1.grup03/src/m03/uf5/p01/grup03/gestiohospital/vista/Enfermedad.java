@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import m03.uf5.p01.grup03.gestiohospital.controlador.GestorConexion;
 import m03.uf5.p01.grup03.gestiohospital.modelo.Conector;
@@ -17,7 +18,7 @@ public class Enfermedad extends javax.swing.JFrame {
         initComponents();
         modelo = new DefaultTableModel();
         codiHistorial.setModel(modelo);
-            
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);    
         modelo.addColumn("Nom malaltia");
         modelo.addColumn("Causa baixa");
         modelo.addColumn("Tractament");

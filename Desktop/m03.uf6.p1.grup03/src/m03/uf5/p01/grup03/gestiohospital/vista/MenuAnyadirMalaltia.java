@@ -14,8 +14,7 @@ public class MenuAnyadirMalaltia extends JFrame {
     JLabel lblBaixa = new JLabel(": ");
     JLabel lblTractament = new JLabel("Cognom 2: ");
     JLabel lblDuration = new JLabel("Duracion (en dias) : ");
-    
-    
+
     public JTextField tfNom = new JTextField();
     public JTextField tfBaixa = new JTextField();
     public JTextField tfTractament = new JTextField();
@@ -49,6 +48,8 @@ public class MenuAnyadirMalaltia extends JFrame {
         add(tfDuration);
         add(btnAcceptar);
         add(btnCancelar);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
     }
 
 }

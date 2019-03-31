@@ -18,8 +18,10 @@ public class BuscarEnfermedad extends JFrame{
     public JLabel lbl7 = new JLabel("");
     public JLabel lbl8 = new JLabel("");
     public JLabel lbl9 = new JLabel("");
+    
     public JButton btnCancelar = new JButton("Cancelar");
     GridLayout bE = new GridLayout(0, 2);
+    
     
      public BuscarEnfermedad(BuscarEnfermedadControlador c) {
         super("Buscar enfermedad");
@@ -29,6 +31,7 @@ public class BuscarEnfermedad extends JFrame{
         this.setResizable(false);
         this.setSize(400, 300);
         btnCancelar.addActionListener(controlador);
+         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         add(lbl1);
         add(lbl2);
         add(lbl3);

@@ -98,6 +98,8 @@ public class MenuAnyadirMetge extends JFrame {
         add(lblConfirmar);
         add(btnAcceptar);
         add(btnCancelar);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
     }
 
 }

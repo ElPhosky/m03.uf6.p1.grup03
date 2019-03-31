@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import m03.uf5.p01.grup03.gestiohospital.controlador.GestorConexion;
 import m03.uf5.p01.grup03.gestiohospital.modelo.Conector;
@@ -12,24 +13,25 @@ import m03.uf5.p01.grup03.gestiohospital.modelo.Conector;
 public class Pacient extends javax.swing.JFrame {
 
     static DefaultTableModel modelo = null;
-    
+
     public Pacient() {
         initComponents();
         modelo = new DefaultTableModel();
         codiHistorial.setModel(modelo);
-            
+
         modelo.addColumn("Nom");
         modelo.addColumn("Cognom");
         modelo.addColumn("2n cognom");
         modelo.addColumn("Num SS");
         modelo.addColumn("Codi Postal");
         modelo.addColumn("NIF");
-                
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         Conector conecta = Conector.getConector();
         conecta.getPacientes();
     }
-    
-    public static void addRow(Object[] filas){
+
+    public static void addRow(Object[] filas) {
         modelo.addRow(filas);
     }
 
@@ -98,7 +100,6 @@ public class Pacient extends javax.swing.JFrame {
      * @param args the command line arguments
      */
 //    public static void main(String args[]) {
-
 //        try {
 //            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 //                if ("Nimbus".equals(info.getName())) {
@@ -124,7 +125,6 @@ public class Pacient extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable codiHistorial;

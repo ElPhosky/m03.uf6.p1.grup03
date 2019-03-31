@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import m03.uf5.p01.grup03.gestiohospital.controlador.GestorConexion;
 import m03.uf5.p01.grup03.gestiohospital.modelo.Conector;
@@ -12,12 +13,12 @@ import m03.uf5.p01.grup03.gestiohospital.modelo.Conector;
 public class Metge extends javax.swing.JFrame {
 
     static DefaultTableModel modelo = null;
-    
+
     public Metge() {
         initComponents();
         modelo = new DefaultTableModel();
         codiHistorial.setModel(modelo);
-            
+
         modelo.addColumn("NIF");
         modelo.addColumn("Telèfon");
         modelo.addColumn("Nombre");
@@ -26,12 +27,14 @@ public class Metge extends javax.swing.JFrame {
         modelo.addColumn("Num SS");
         modelo.addColumn("Num Empleado");
         modelo.addColumn("Salari mensual");
-                
+
         Conector conecta = Conector.getConector();
         conecta.getMetges();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
     }
-    
-    public static void addRow(Object[] filas){
+
+    public static void addRow(Object[] filas) {
         modelo.addRow(filas);
     }
 
@@ -100,7 +103,6 @@ public class Metge extends javax.swing.JFrame {
      * @param args the command line arguments
      */
 //    public static void main(String args[]) {
-
 //        try {
 //            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 //                if ("Nimbus".equals(info.getName())) {
@@ -126,7 +128,6 @@ public class Metge extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable codiHistorial;

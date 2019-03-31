@@ -85,6 +85,8 @@ public class MenuAnyadirPaciente extends JFrame {
         add(lblConfirmar);
         add(btnAcceptar);
         add(btnCancelar);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
     }
 
 }

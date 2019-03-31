@@ -11,25 +11,25 @@ import javax.swing.JTextField;
 import m03.uf5.p01.grup03.gestiohospital.controlador.Controlador;
 
 public class RadioRegistrarVisitaMedico extends JFrame { //VISTA QUE SIRVE PARA DOS CONTROLADORES
-    
+
     private Controlador controlador;
 
     JLabel lblOpcion = new JLabel("¿Cómo quieres identificar al médico?");
-    public JRadioButton radioNif=new JRadioButton("NIF",true);
-    public JRadioButton radioNumss=new JRadioButton("Num. SS",false);
-    public JRadioButton radioHistorial=new JRadioButton("Código de historial",false);
+    public JRadioButton radioNif = new JRadioButton("NIF", true);
+    public JRadioButton radioNumss = new JRadioButton("Num. SS", false);
+    public JRadioButton radioHistorial = new JRadioButton("Código de historial", false);
     ButtonGroup gRadio = new ButtonGroup();
     public JTextField fieldIdentificacion = new JTextField();
     public JButton btnAcceptar = new JButton("Aceptar");
     public JButton btnCancelar = new JButton("Cancelar");
     public JLabel lblComprobar = new JLabel("");
-    
+
     public RadioRegistrarVisitaMedico(Controlador c) {
         super("Registrar Visita Médico");
         controlador = c;
         inicializa();
     }
-    
+
     public void inicializa() {
         btnAcceptar.addActionListener(controlador);
         btnCancelar.addActionListener(controlador);
@@ -48,7 +48,8 @@ public class RadioRegistrarVisitaMedico extends JFrame { //VISTA QUE SIRVE PARA 
         panel.add(btnAcceptar);
         panel.add(btnCancelar);
         panel.add(lblComprobar);
-        
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         add(panel);
     }
 
