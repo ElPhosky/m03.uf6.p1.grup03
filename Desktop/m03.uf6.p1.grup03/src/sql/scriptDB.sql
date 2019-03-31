@@ -6,7 +6,7 @@ GRANT ALL PRIVILEGES ON CAP.* TO CapAdmin WITH GRANT OPTION;
 USE gestiohospital;
 
 CREATE TABLE malaltia(
-	codiMalaltia INT PRIMARY KEY,
+	codiMalaltia INT PRIMARY KEY AUTO_INCREMENT,
     nomMalaltia VARCHAR(20),
     causaBaixa BOOLEAN,
     tractament VARCHAR(500),
@@ -14,7 +14,7 @@ CREATE TABLE malaltia(
 );
 
 CREATE TABLE visita(
-	idVisita INT PRIMARY KEY,
+	idVisita INT PRIMARY KEY AUTO_INCREMENT,
     fecha VARCHAR(15),
     codiMalaltia INT,
     nifPacient VARCHAR(9),
@@ -61,9 +61,9 @@ ALTER TABLE VISITA ADD CONSTRAINT fk_PACIENT_nifPacient FOREIGN KEY (nifPacient)
 				   ADD CONSTRAINT fk_PACIENT_nifMetge FOREIGN KEY (nifMetge) REFERENCES metge(nif) ON DELETE SET NULL,
                    ADD CONSTRAINT fk_PACIENT_codiMalaltia FOREIGN KEY (codiMalaltia) REFERENCES malaltia(codiMalaltia) ON DELETE SET NULL;
 
-INSERT INTO malaltia VALUES(1,"resfriao",false,"Unas orikas en cama y como nuevo","PT2H");
-INSERT INTO malaltia VALUES(2,"Esquizofrenia",true,"Xungo lo veo","PT365H");
-INSERT INTO malaltia VALUES(3,"Me desmayo", true,"Pastillas y ya","PT4H");
+INSERT INTO malaltia(nomMalaltia,causaBaixa,tractament,duradaTractament) VALUES("resfriao",false,"Unas orikas en cama y como nuevo","PT2H");
+INSERT INTO malaltia(nomMalaltia,causaBaixa,tractament,duradaTractament) VALUES("Esquizofrenia",true,"Xungo lo veo","PT365H");
+INSERT INTO malaltia(nomMalaltia,causaBaixa,tractament,duradaTractament) VALUES("Me desmayo", true,"Pastillas y ya","PT4H");
 
 INSERT INTO metge VALUES("47840738L","935880478","Rafa","Gonzalez","Seliva","111234567890","08191","Terrassa","C encantao",0,5,"ES10000","1","1200");
 INSERT INTO metge VALUES("47843738L","933880478","Kevin","Sanchez","Gonzalez","111345678990","08191","Terrassa","C tontin",2,2,"ES1000023","2","1300");
@@ -71,7 +71,7 @@ INSERT INTO metge VALUES("47740739Y","935878478","Oscar","Gonzalez","Garcia","11
 
 INSERT INTO PacientHistorial VALUES("45986926J","+34634587957","Kevin","fdogn","dsijgond","281234567840","08222","PorfaFunciona","llanto",1,1,1);
 
-INSERT INTO visita VALUES(1,"30/03/2019",3,"45986926J","47840738L");
+INSERT INTO visita(fecha,codiMalaltia,nifPacient,nifMetge) VALUES("30/03/2019",3,"45986926J","47840738L");
 
 SELECT * FROM malaltia;
 SELECT * FROM metge;

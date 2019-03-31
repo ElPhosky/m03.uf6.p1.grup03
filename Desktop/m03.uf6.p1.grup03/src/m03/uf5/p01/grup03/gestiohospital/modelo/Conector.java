@@ -25,15 +25,15 @@ public class Conector {
     private ResultSet rs = null;
     private GestorConexion conn = new GestorConexion();
     private static Conector conector = null;
-//    
-//    public static void main(String[] args) {
-//        Conector conector = Conector.getConector();
-////        conector.getPacientes();
-////        conector.getMetges();
-////        conector.getVisitas();
-//       conector.getMalalties();
-//        
-//    }
+    
+    public static void main(String[] args) {
+        Conector conector = Conector.getConector();
+        conector.getPacientes();
+        conector.getMetges();
+        conector.getVisitas();
+       conector.getMalalties();
+        
+    }
     
     public static Conector getConector(){
         if(conector == null){
