@@ -33,9 +33,12 @@ public class Conector {
 //        conector.getVisitas();
 //       conector.getMalalties();
 //        conector.FindPacientDNI("45986926J");
-//        conector.FindnSS("281234567840");
-//        conector.FindnumHistorial("2");
-conector.MostraHistorial();
+//        conector.FindPacientnSS("281234567840");
+//        conector.FindPacientnumHistorial("2");
+//        conector.FindMetgeDNI("47740739Y");
+//        conector.FindMetgenSS("11134567890");
+//        conector.FindMetgenumHistorial("1");
+        conector.MostraHistorial();
 
     }
 
@@ -133,7 +136,7 @@ conector.MostraHistorial();
 
                 for (int i = 0; i < cantidadColumnas; i++) {
                     filas[i] = rs.getObject(i + 1);
-                    
+
                     System.out.println(filas[i]);
                 }
                 m03.uf5.p01.grup03.gestiohospital.vista.Metge.addRow(filas);
@@ -204,7 +207,7 @@ conector.MostraHistorial();
         try {
 
             Connection con = conn.getConexion();
-            String sql = "SELECT nom, cognom1, cognom2, nif, numSS, codiPostal FROM pacientHistorial WHERE nif = '" + dni + "'";
+            String sql = "SELECT nif FROM pacientHistorial WHERE nif = '" + dni + "'";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -226,12 +229,12 @@ conector.MostraHistorial();
         return filas;
     }
 
-    public Object[] FindnSS(String nSS) {
+    public Object[] FindMetgeDNI(String dni) {
         Object[] filas = null;
         try {
 
             Connection con = conn.getConexion();
-            String sql = "SELECT nom, cognom1, cognom2, nif, numSS, codiPostal FROM pacientHistorial WHERE numSS = '" + nSS + "'";
+            String sql = "SELECT nif FROM metge WHERE nif = '" + dni + "'";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -252,12 +255,13 @@ conector.MostraHistorial();
         }
         return filas;
     }
-        public Object[] FindnumHistorial(String historial) {
+
+    public Object[] FindPacientnSS(String nSS) {
         Object[] filas = null;
         try {
 
             Connection con = conn.getConexion();
-            String sql = "SELECT nom, cognom1, cognom2, nif, numSS, codiPostal FROM pacientHistorial WHERE codiHistorial = '" + historial + "'";
+            String sql = "SELECT nif FROM pacientHistorial WHERE numSS = '" + nSS + "'";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -278,14 +282,97 @@ conector.MostraHistorial();
         }
         return filas;
     }
+
+    public Object[] FindMetgenSS(String nSS) {
+        Object[] filas = null;
+        try {
+
+            Connection con = conn.getConexion();
+            String sql = "SELECT nif FROM metge WHERE numSS = '" + nSS + "'";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            ResultSetMetaData rsMd = rs.getMetaData();
+            int cantidadColumnas = rsMd.getColumnCount();
+
+            while (rs.next()) {
+                filas = new Object[cantidadColumnas];
+
+                for (int i = 0; i < cantidadColumnas; i++) {
+                    filas[i] = rs.getObject(i + 1);
+                    System.out.println(filas[i]);
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return filas;
+    }
+
+    public Object[] FindPacientnumHistorial(String historial) {
+        Object[] filas = null;
+        try {
+
+            Connection con = conn.getConexion();
+            String sql = "SELECT nif FROM pacientHistorial WHERE codiHistorial = '" + historial + "'";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            ResultSetMetaData rsMd = rs.getMetaData();
+            int cantidadColumnas = rsMd.getColumnCount();
+
+            while (rs.next()) {
+                filas = new Object[cantidadColumnas];
+
+                for (int i = 0; i < cantidadColumnas; i++) {
+                    filas[i] = rs.getObject(i + 1);
+                    System.out.println(filas[i]);
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return filas;
+    }
+
+    public Object[] FindMetgenumHistorial(String numEmpleado) {
+        Object[] filas = null;
+        try {
+
+            Connection con = conn.getConexion();
+            String sql = "SELECT nif FROM metge WHERE numEmpleado = '" + numEmpleado + "'";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            ResultSetMetaData rsMd = rs.getMetaData();
+            int cantidadColumnas = rsMd.getColumnCount();
+
+            while (rs.next()) {
+                filas = new Object[cantidadColumnas];
+
+                for (int i = 0; i < cantidadColumnas; i++) {
+                    filas[i] = rs.getObject(i + 1);
+                    System.out.println(filas[i]);
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return filas;
+    }
+
     public Object[] MostraHistorial() {
         Object[] filas = null;
         try {
 
             Connection con = conn.getConexion();
-            String sql = "SELECT visita.nifMetge, malaltia.nomMalaltia, visita.fecha,pacientHistorial.nif FROM visita "
+            String sql = "SELECT metge.nif, malaltia.nomMalaltia, visita.fecha,pacientHistorial.nif FROM visita "
                     + "INNER JOIN pacientHistorial on visita.codiHistorial = pacientHistorial.codiHistorial "
-                    + "INNER JOIN malaltia on visita.codiMalaltia = malaltia.codiMalaltia";
+                    + "INNER JOIN malaltia on visita.codiMalaltia = malaltia.codiMalaltia "
+                    + "INNER JOIN metge on visita.numEmpleado = metge.numEmpleado";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 

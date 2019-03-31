@@ -20,7 +20,7 @@ CREATE TABLE visita(
     fecha VARCHAR(15),
     codiMalaltia INT,
     codiHistorial INT,
-    nifMetge VARCHAR(9)
+    numEmpleado INT
 );
 
 
@@ -41,7 +41,7 @@ CREATE TABLE pacientHistorial(
 );
 
 CREATE TABLE metge(
-	nif VARCHAR(9) PRIMARY KEY,
+	nif VARCHAR(9),
     telefon VARCHAR(12),
     nom VARCHAR(30),
     cognom1 VARCHAR(30),
@@ -53,14 +53,14 @@ CREATE TABLE metge(
     numero INT,
     planta INT,
     codiCompteCorrent VARCHAR(30),
-    numEmpleado VARCHAR(20),
-    salariMensual VARCHAR(15)
+    salariMensual VARCHAR(15),
+    numEmpleado int PRIMARY KEY AUTO_INCREMENT
 );
 
 
 
 ALTER TABLE VISITA ADD CONSTRAINT fk_PACIENT_codiHistorialPacient FOREIGN KEY (codiHistorial) REFERENCES pacientHistorial(codiHistorial) ON DELETE SET NULL,
-				   ADD CONSTRAINT fk_PACIENT_nifMetge FOREIGN KEY (nifMetge) REFERENCES metge(nif) ON DELETE SET NULL,
+				   ADD CONSTRAINT fk_PACIENT_numEmpleado FOREIGN KEY (numEmpleado) REFERENCES metge(numEmpleado) ON DELETE SET NULL,
                    ADD CONSTRAINT fk_PACIENT_codiMalaltia FOREIGN KEY (codiMalaltia) REFERENCES malaltia(codiMalaltia) ON DELETE SET NULL;
 
 INSERT INTO malaltia(nomMalaltia,causaBaixa,tractament,duradaTractament) VALUES("resfriao",false,"Unas orikas en cama y como nuevo","PT2H");
@@ -74,7 +74,7 @@ INSERT INTO metge(nif,telefon,nom,cognom1,cognom2,numSS,codiPostal,ciutat,carrer
 
 INSERT INTO PacientHistorial(nif,telefon,nom,cognom1,cognom2,numSS,codiPostal,ciutat,carrer,numero,planta)VALUES("45986926J","+34634587957","Kevin","fdogn","dsijgond","281234567840","08222","PorfaFunciona","llanto",1,1);
 
-INSERT INTO visita(fecha,codiMalaltia,codiHistorial,nifMetge) VALUES("30/03/2019",3,1,"47840738L");
+INSERT INTO visita(fecha,codiMalaltia,codiHistorial,numEmpleado) VALUES("30/03/2019",3,1,1);
 
 DELIMITER //
 CREATE PROCEDURE test()
