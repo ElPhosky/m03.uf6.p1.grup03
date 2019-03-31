@@ -90,9 +90,9 @@ public class MenuAnyadirMetgeControlador extends Controlador {
 
             if (temp) {
                 Adreca adreca = new Adreca(ciutat, cp, carrer, Integer.parseInt(numero), planta, Integer.parseInt(porta));
-                Metge metge = new Metge(nombre, apellido1, apellido2, NSS, DNI, Integer.parseInt(numEmpleat), Integer.parseInt(salariMensual), codiCompteCorrent, Telefon, adreca);
+//                Metge metge = new Metge(nombre, apellido1, apellido2, NSS, DNI, Integer.parseInt(numEmpleat), Integer.parseInt(salariMensual), codiCompteCorrent, Telefon, adreca);
                 //control.hospitalPrueba.afegirMetge(metge);
-                Creacion.escriuMetge(metge);
+//                Creacion.escriuMetge(metge);
                 mAM.dispose();
             }else{
                 mAM.lblConfirmar.setText(salida);
