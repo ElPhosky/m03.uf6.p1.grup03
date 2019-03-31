@@ -34,7 +34,8 @@ public class Conector {
 //       conector.getMalalties();
 //        conector.FindPacientDNI("45986926J");
 //        conector.FindnSS("281234567840");
-        conector.FindnumHistorial("1");
+//        conector.FindnumHistorial("2");
+conector.MostraHistorial();
 
     }
 
@@ -92,7 +93,7 @@ public class Conector {
         try {
 
             Connection con = conn.getConexion();
-            String sql = "SELECT nom, cognom1, cognom2, nif, numSS, codiPostal FROM pacientHistorial";
+            String sql = "SELECT nom, cognom1, cognom2, nif, numSS, codiPostal,codiHistorial FROM pacientHistorial";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -104,6 +105,7 @@ public class Conector {
 
                 for (int i = 0; i < cantidadColumnas; i++) {
                     filas[i] = rs.getObject(i + 1);
+                    System.out.println(filas[i]);
                 }
                 m03.uf5.p01.grup03.gestiohospital.vista.Pacient.addRow(filas);
             }
@@ -276,5 +278,32 @@ public class Conector {
         }
         return filas;
     }
-    
+    public Object[] MostraHistorial() {
+        Object[] filas = null;
+        try {
+
+            Connection con = conn.getConexion();
+            String sql = "SELECT visita.nifMetge, malaltia.nomMalaltia, visita.fecha,pacientHistorial.nif FROM visita "
+                    + "INNER JOIN pacientHistorial on visita.codiHistorial = pacientHistorial.codiHistorial "
+                    + "INNER JOIN malaltia on visita.codiMalaltia = malaltia.codiMalaltia";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            ResultSetMetaData rsMd = rs.getMetaData();
+            int cantidadColumnas = rsMd.getColumnCount();
+
+            while (rs.next()) {
+                filas = new Object[cantidadColumnas];
+
+                for (int i = 0; i < cantidadColumnas; i++) {
+                    filas[i] = rs.getObject(i + 1);
+                    System.out.println(filas[i]);
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return filas;
+    }
 }
