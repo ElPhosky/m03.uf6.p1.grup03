@@ -3,7 +3,7 @@ CREATE DATABASE gestiohospital;
 DROP USER IF EXISTS admin_hospital_grup3;
 DROP USER IF EXISTS usuari_hospital_grup3;
 CREATE USER admin_hospital_grup3 IDENTIFIED BY 'admin';
-GRANT ALL PRIVILEGES ON CAP.* TO admin_hospital_grup3 WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON gestiohospital.* TO admin_hospital_grup3 WITH GRANT OPTION;
 CREATE USER usuari_hospital_grup3 IDENTIFIED BY 'usuari';
 USE gestiohospital;
 
@@ -85,6 +85,7 @@ BEGIN
 END //
 delimiter ;
 
+GRANT EXECUTE ON PROCEDURE gestiohospital.test TO usuari_hospital_grup3;
 
     
 SELECT * FROM malaltia;
