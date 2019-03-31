@@ -93,17 +93,17 @@ public class MenuAnyadirMetgeControlador extends Controlador {
                 temp = false;
             }
 
-            if (!temp) {
+            if (temp) {
                 PreparedStatement ps = null;
                 GestorConexion objCon = new GestorConexion();
                 Connection conn = objCon.getConexion();
                 try {
                     
                     String sql = "INSERT INTO metge(nif,telefon,nom,cognom1,cognom2,numSS,codiPostal,ciutat,carrer,numero,planta,codiCompteCorrent,numEmpleado,salariMensual)"
-                            + "VALUES(" + DNI + "," + Telefon + "," + nombre + "," + apellido1 + "," + apellido2 + "," + NSS + "," + cp + "," 
-                            + ciutat + "," + carrer + "," + numero + "," + planta + "," + codiCompteCorrent + "," + numEmpleat + "," + salariMensual + ");";
+                            + "VALUES(\"" + DNI + "\",\"" + Telefon + "\",\"" + nombre + "\",\"" + apellido1 + "\",\"" + apellido2 + "\",\"" + NSS + "\",\"" + cp + "\",\"" 
+                            + ciutat + "\",\"" + carrer + "\"," + numero + "," + planta + ",\"" + codiCompteCorrent + "\",\"" + numEmpleat + "\",\"" + salariMensual + "\");";
                     System.out.println(sql);
-                    ps = conn.prepareStatement("INSERT INTO metge(nif,telefon,nom,cognom1,cognom2,numSS,codiPostal,ciutat,carrer,numero,planta,codiCompteCorrent,numEmpleado,salariMensual)VALUES(\"1235678O\",\"+34634587957\",\"Kevin\",\"fdogn\",\"dsijgond\",\"281234567840\",\"08222\",\"PorfaFunciona\",\"llanto\",1,1,\"ES10000\",\"1\",\"1200\");");
+                    ps = conn.prepareStatement(sql);
                     ps.execute();
                 } catch (SQLException ex) {
                     Logger.getLogger(MenuAnyadirMetgeControlador.class.getName()).log(Level.SEVERE, null, ex);
