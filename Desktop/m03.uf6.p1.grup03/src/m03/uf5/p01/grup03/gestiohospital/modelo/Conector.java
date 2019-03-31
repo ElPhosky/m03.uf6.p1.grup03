@@ -97,7 +97,7 @@ public class Conector {
         try {
 
             Connection con = conn.getConexion();
-            String sql = "SELECT nom, cognom1, cognom2, nif, numSS, codiPostal,codiHistorial FROM pacientHistorial";
+            String sql = "SELECT nom, cognom1, cognom2,numSS, codiPostal,nif,codiHistorial FROM pacientHistorial";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
