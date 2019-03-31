@@ -14,7 +14,6 @@ public class Menu extends JFrame {
     public JButton btnNuevoMedico = new JButton("Nuevo Medico");
     public JButton btnMostrarPaciente = new JButton("Mostrar paciente");
     public JButton btnMostrarMedico = new JButton("Mostrar médico");
-    public JButton btnHistorial = new JButton("Ver historial");
     public JButton btnBuscarEnfermedad = new JButton("Mostrar enfermedad");
 
     public Menu(MenuControlador c) {
@@ -30,7 +29,6 @@ public class Menu extends JFrame {
         btnNuevoMedico.addActionListener(controlador);
         btnMostrarPaciente.addActionListener(controlador);
         btnMostrarMedico.addActionListener(controlador);
-        btnHistorial.addActionListener(controlador);
         btnBuscarEnfermedad.addActionListener(controlador);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -45,7 +43,6 @@ public class Menu extends JFrame {
         panel.add(btnNuevoMedico);
         panel.add(btnMostrarPaciente);
         panel.add(btnMostrarMedico);
-        panel.add(btnHistorial);
         panel.add(btnBuscarEnfermedad);
         add(panel);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
