@@ -20,9 +20,11 @@ import m03.uf5.p01.grup03.gestiohospital.modelo.Conector;
  */
 public class Metge extends javax.swing.JFrame {
 
+    static DefaultTableModel modelo = null;
+    
     public Metge() {
         initComponents();
-        DefaultTableModel modelo = new DefaultTableModel();
+        modelo = new DefaultTableModel();
         codiHistorial.setModel(modelo);
             
         modelo.addColumn("NIF");
@@ -35,8 +37,11 @@ public class Metge extends javax.swing.JFrame {
         modelo.addColumn("Salari mensual");
                 
         Conector conecta = Conector.getConector();
-        Object[] filas = conecta.getMetges();
-        modelo.addRow(filas); 
+        conecta.getMetges();
+    }
+    
+    public static void addRow(Object[] filas){
+        modelo.addRow(filas);
     }
 
     /**

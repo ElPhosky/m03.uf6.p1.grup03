@@ -113,7 +113,7 @@ public class Conector {
         return filas;
     }
 
-    public Object[] getMetges() {
+    public void getMetges() {
         Object[] filas = null;
         try {
 
@@ -134,12 +134,12 @@ public class Conector {
                     
                     System.out.println(filas[i]);
                 }
+                m03.uf5.p01.grup03.gestiohospital.vista.Metge.addRow(filas);
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return filas;
     }
 
     public Object[] getVisitas() {
