@@ -34,7 +34,6 @@ public class MenuAnyadirMetgeControlador extends Controlador {
             String NSS = mAM.tfNSS.getText();
             String DNI = mAM.tfDNI.getText();
             String Telefon = mAM.tfTelefon.getText();
-            String numEmpleat = mAM.tfNumEmpleat.getText();
             String salariMensual = mAM.tfSalariMensual.getText();
             String codiCompteCorrent = mAM.tfCompteCorrent.getText();
             String ciutat = mAM.tfCiudad.getText();
@@ -94,9 +93,9 @@ public class MenuAnyadirMetgeControlador extends Controlador {
             }
 
             if (temp) {
-                String sql = "INSERT INTO metge(nif,telefon,nom,cognom1,cognom2,numSS,codiPostal,ciutat,carrer,numero,planta,codiCompteCorrent,numEmpleado,salariMensual)"
+                String sql = "INSERT INTO metge(nif,telefon,nom,cognom1,cognom2,numSS,codiPostal,ciutat,carrer,numero,planta,codiCompteCorrent,salariMensual)"
                         + "VALUES(\"" + DNI + "\",\"" + Telefon + "\",\"" + nombre + "\",\"" + apellido1 + "\",\"" + apellido2 + "\",\"" + NSS + "\",\"" + cp + "\",\""
-                        + ciutat + "\",\"" + carrer + "\"," + numero + "," + planta + ",\"" + codiCompteCorrent + "\",\"" + numEmpleat + "\",\"" + salariMensual + "\");";
+                        + ciutat + "\",\"" + carrer + "\"," + numero + "," + planta + ",\"" + codiCompteCorrent + "\",\"" + salariMensual + "\");";
                 Conector.addMetge(sql);
 //                Metge metge = new Metge(nombre, apellido1, apellido2, NSS, DNI, Integer.parseInt(numEmpleat), Integer.parseInt(salariMensual), codiCompteCorrent, Telefon, adreca);
                 //control.hospitalPrueba.afegirMetge(metge);

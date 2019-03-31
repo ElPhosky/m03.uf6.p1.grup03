@@ -15,7 +15,6 @@ public class MenuAnyadirMetge extends JFrame {
     JLabel lblNSS = new JLabel("Numero Seguretat Social: ");
     JLabel lblDNI = new JLabel("DNI : ");
     JLabel lblTelefon = new JLabel("Telefon : ");
-    JLabel lblNumEmpleat = new JLabel("Nº Empleat : ");
     JLabel lblSalariMensual = new JLabel("Salari : ");
     JLabel lblCompteCorrent = new JLabel("Compte Corrent : ");
     JLabel lblValido = new JLabel("Valido : ");
@@ -34,7 +33,6 @@ public class MenuAnyadirMetge extends JFrame {
     public JTextField tfNSS = new JTextField();
     public JTextField tfDNI = new JTextField();
     public JTextField tfTelefon = new JTextField();
-    public JTextField tfNumEmpleat = new JTextField();
     public JTextField tfSalariMensual = new JTextField();
     public JTextField tfCompteCorrent = new JTextField();
     public JTextField tfCiudad = new JTextField();
@@ -74,8 +72,6 @@ public class MenuAnyadirMetge extends JFrame {
         add(tfDNI);
         add(lblTelefon);
         add(tfTelefon);
-        add(lblNumEmpleat);
-        add(tfNumEmpleat);
         add(lblSalariMensual);
         add(tfSalariMensual);
         add(lblCompteCorrent);
