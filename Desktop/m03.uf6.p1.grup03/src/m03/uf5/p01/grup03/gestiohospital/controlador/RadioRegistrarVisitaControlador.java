@@ -106,11 +106,15 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
         }
 
         //BOTÓN CANCELAR
+        try{
         if (e.getSource() == radioPaciente.btnCancelar) {
             radioPaciente.dispose();
+        }}catch(NullPointerException esepsion){
+            
         }
 
         //MÉDICO
+        try{
         if (e.getSource() == radioMedico.btnAcceptar) {
             String texto = radioMedico.fieldIdentificacion.getText();
 
@@ -175,11 +179,16 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
                     radioMedico.lblComprobar.setText("Número introducido incorrectamente");
                 }
             }
+        }}catch(Exception excepcionnullpointer){
+            
         }
 
         //BOTÓN CANCELAR
+        try{
         if (e.getSource() == radioMedico.btnCancelar) {
             radioMedico.dispose();
+        }}catch(Exception nullpointeragain){
+            
         }
 
         //ID MALALTIA
