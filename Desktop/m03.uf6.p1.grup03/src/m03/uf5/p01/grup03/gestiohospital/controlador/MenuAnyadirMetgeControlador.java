@@ -1,6 +1,11 @@
 package m03.uf5.p01.grup03.gestiohospital.controlador;
 
 import java.awt.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 //import static m03.uf5.p01.grup03.gestiohospital.controlador.MenuControlador.control;
@@ -89,6 +94,15 @@ public class MenuAnyadirMetgeControlador extends Controlador {
             }
 
             if (temp) {
+                PreparedStatement ps = null;
+                GestorConexion objCon = new GestorConexion();
+                Connection conn = objCon.getConexion();
+                try {
+                    ps = conn.prepareStatement("INSERT INTO metge(nif,telefon,nom,cognom1,cognom2,numSS,codiPostal,ciutat,carrer,numero,planta,codiCompteCorrent,numEmpleado,salariMensual)VALUES(" +DNI +","+Telefon+","+nombre+","+apellido1+","+apellido2+","+NSS+","+cp+","+ciutat+","+carrer+","+numero+","+planta+","+codiCompteCorrent+","+numEmpleat+","+salariMensual+");");
+                    ps.execute();
+                } catch (SQLException ex) {
+                    Logger.getLogger(MenuAnyadirMetgeControlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 Adreca adreca = new Adreca(ciutat, cp, carrer, Integer.parseInt(numero), planta, Integer.parseInt(porta));
 //                Metge metge = new Metge(nombre, apellido1, apellido2, NSS, DNI, Integer.parseInt(numEmpleat), Integer.parseInt(salariMensual), codiCompteCorrent, Telefon, adreca);
                 //control.hospitalPrueba.afegirMetge(metge);
