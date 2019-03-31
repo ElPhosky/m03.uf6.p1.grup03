@@ -48,75 +48,78 @@ public class MenuAnyadirMetgeControlador extends Controlador {
             Pattern pat = Pattern.compile("^[a-zA-ZáéíóúàèìòùÀÈÌÒÙÁÉÍÓÚñÑçÇäÄëËïÏöÖüÜ\\s]*$");
             Matcher mat = pat.matcher(nombre);
             if (!mat.find()) { //COMPRUEBA NOMBRE
-                salida = (salida+"Revisa Nombre");
+                salida = (salida + "Revisa Nombre");
                 temp = false;
             }
             mat = pat.matcher(apellido1);
             if (!mat.find()) { //COMPRUEBA APELLIDO1
 
-                salida = (salida+"Revisa Primer Apellido");
+                salida = (salida + "Revisa Primer Apellido");
                 temp = false;
             }
             mat = pat.matcher(apellido2); //COMPRUEBA APELLIDO 2
             if (!mat.find()) {
-                salida = (salida+"Revisa Segundo Apellido");
+                salida = (salida + "Revisa Segundo Apellido");
                 temp = false;
             }
             pat = Pattern.compile("\\d{8}[A-HJ-NP-TV-Z]");
             mat = pat.matcher(DNI);
             if (!mat.find()) { //COMPRUEBA DNI
-                salida = (salida+"Revisa DNI");
+                salida = (salida + "Revisa DNI");
                 temp = false;
             }
             pat = Pattern.compile("(66|53|50|[0-4][0-9])-?\\d{8}-?\\d{2}");
             mat = pat.matcher(NSS);
             if (!mat.find()) { //COMPRUEBA NSS
-                salida = (salida+"Revisa NSS");
+                salida = (salida + "Revisa NSS");
                 temp = false;
             }
             pat = Pattern.compile("^(?:(?:\\+|00)?34)?[6789]\\d{8}$");
             mat = pat.matcher(Telefon);
             if (!mat.find()) { //COMPRUEBA TELEFON
-                salida = (salida+"Revisa Telefon");
+                salida = (salida + "Revisa Telefon");
                 temp = false;
             }
             try {
                 Integer.parseInt(numero);
             } catch (NumberFormatException e) {
-                salida = (salida+"Revisa el numero");
+                salida = (salida + "Revisa el numero");
                 temp = false;
             }
             try {
                 Integer.parseInt(porta);
             } catch (NumberFormatException e) {
-                salida = (salida+"Revisa la puerta.");
+                salida = (salida + "Revisa la puerta.");
                 temp = false;
             }
 
-            if (temp) {
+            if (!temp) {
                 PreparedStatement ps = null;
                 GestorConexion objCon = new GestorConexion();
                 Connection conn = objCon.getConexion();
                 try {
-                    ps = conn.prepareStatement("INSERT INTO metge(nif,telefon,nom,cognom1,cognom2,numSS,codiPostal,ciutat,carrer,numero,planta,codiCompteCorrent,numEmpleado,salariMensual)VALUES(" +DNI +","+Telefon+","+nombre+","+apellido1+","+apellido2+","+NSS+","+cp+","+ciutat+","+carrer+","+numero+","+planta+","+codiCompteCorrent+","+numEmpleat+","+salariMensual+");");
+                    
+                    String sql = "INSERT INTO metge(nif,telefon,nom,cognom1,cognom2,numSS,codiPostal,ciutat,carrer,numero,planta,codiCompteCorrent,numEmpleado,salariMensual)"
+                            + "VALUES(" + DNI + "," + Telefon + "," + nombre + "," + apellido1 + "," + apellido2 + "," + NSS + "," + cp + "," 
+                            + ciutat + "," + carrer + "," + numero + "," + planta + "," + codiCompteCorrent + "," + numEmpleat + "," + salariMensual + ");";
+                    System.out.println(sql);
+                    ps = conn.prepareStatement("INSERT INTO metge(nif,telefon,nom,cognom1,cognom2,numSS,codiPostal,ciutat,carrer,numero,planta,codiCompteCorrent,numEmpleado,salariMensual)VALUES(\"1235678O\",\"+34634587957\",\"Kevin\",\"fdogn\",\"dsijgond\",\"281234567840\",\"08222\",\"PorfaFunciona\",\"llanto\",1,1,\"ES10000\",\"1\",\"1200\");");
                     ps.execute();
                 } catch (SQLException ex) {
                     Logger.getLogger(MenuAnyadirMetgeControlador.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                Adreca adreca = new Adreca(ciutat, cp, carrer, Integer.parseInt(numero), planta, Integer.parseInt(porta));
 //                Metge metge = new Metge(nombre, apellido1, apellido2, NSS, DNI, Integer.parseInt(numEmpleat), Integer.parseInt(salariMensual), codiCompteCorrent, Telefon, adreca);
                 //control.hospitalPrueba.afegirMetge(metge);
 //                Creacion.escriuMetge(metge);
                 mAM.dispose();
-            }else{
+            } else {
                 mAM.lblConfirmar.setText(salida);
             }
         }
-            //BOTÓN CANCELAR
-            if (ae.getSource() == mAM.btnCancelar) {
-                mAM.dispose();
-            }
+        //BOTÓN CANCELAR
+        if (ae.getSource() == mAM.btnCancelar) {
+            mAM.dispose();
         }
-
     }
 
+}

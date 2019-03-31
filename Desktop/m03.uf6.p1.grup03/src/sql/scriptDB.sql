@@ -66,8 +66,9 @@ INSERT INTO malaltia(nomMalaltia,causaBaixa,tractament,duradaTractament) VALUES(
 INSERT INTO malaltia(nomMalaltia,causaBaixa,tractament,duradaTractament) VALUES("Me desmayo", true,"Pastillas y ya","PT4H");
 
 INSERT INTO metge VALUES("47840738L","935880478","Rafa","Gonzalez","Seliva","111234567890","08191","Terrassa","C encantao",0,5,"ES10000","1","1200");
-INSERT INTO metge VALUES("47843738L","933880478","Kevin","Sanchez","Gonzalez","111345678990","08191","Terrassa","C tontin",2,2,"ES1000023","2","1300");
+INSERT INTO metge VALUES("47843738L","933880478","Kevin","Sanchez","Gonzalez","11134567890","08191","Terrassa","C tontin",2,2,"ES1000023","2","1300");
 INSERT INTO metge VALUES("47740739Y","935878478","Oscar","Gonzalez","Garcia","111234587890","08191","Rubi","C sevilla",7,0,"ES132420000","3","2500");
+INSERT INTO metge(nif,telefon,nom,cognom1,cognom2,numSS,codiPostal,ciutat,carrer,numero,planta,codiCompteCorrent,numEmpleado,salariMensual)VALUES("45986926J","+34634587957","Kevin","fdogn","dsijgond","281234567840","08222","PorfaFunciona","llanto",1,1,"ES10000","1","1200");
 
 INSERT INTO PacientHistorial(nif,telefon,nom,cognom1,cognom2,numSS,codiPostal,ciutat,carrer,numero,planta)VALUES("45986926J","+34634587957","Kevin","fdogn","dsijgond","281234567840","08222","PorfaFunciona","llanto",1,1);
 
