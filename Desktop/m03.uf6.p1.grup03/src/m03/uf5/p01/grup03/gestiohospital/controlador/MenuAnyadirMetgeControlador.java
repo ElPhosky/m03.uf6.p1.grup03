@@ -94,20 +94,10 @@ public class MenuAnyadirMetgeControlador extends Controlador {
             }
 
             if (temp) {
-                PreparedStatement ps = null;
-                GestorConexion objCon = new GestorConexion();
-                Connection conn = objCon.getConexion();
-                try {
-                    
-                    String sql = "INSERT INTO metge(nif,telefon,nom,cognom1,cognom2,numSS,codiPostal,ciutat,carrer,numero,planta,codiCompteCorrent,numEmpleado,salariMensual)"
-                            + "VALUES(\"" + DNI + "\",\"" + Telefon + "\",\"" + nombre + "\",\"" + apellido1 + "\",\"" + apellido2 + "\",\"" + NSS + "\",\"" + cp + "\",\"" 
-                            + ciutat + "\",\"" + carrer + "\"," + numero + "," + planta + ",\"" + codiCompteCorrent + "\",\"" + numEmpleat + "\",\"" + salariMensual + "\");";
-                    System.out.println(sql);
-                    ps = conn.prepareStatement(sql);
-                    ps.execute();
-                } catch (SQLException ex) {
-                    Logger.getLogger(MenuAnyadirMetgeControlador.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                String sql = "INSERT INTO metge(nif,telefon,nom,cognom1,cognom2,numSS,codiPostal,ciutat,carrer,numero,planta,codiCompteCorrent,numEmpleado,salariMensual)"
+                        + "VALUES(\"" + DNI + "\",\"" + Telefon + "\",\"" + nombre + "\",\"" + apellido1 + "\",\"" + apellido2 + "\",\"" + NSS + "\",\"" + cp + "\",\""
+                        + ciutat + "\",\"" + carrer + "\"," + numero + "," + planta + ",\"" + codiCompteCorrent + "\",\"" + numEmpleat + "\",\"" + salariMensual + "\");";
+                Conector.addMetge(sql);
 //                Metge metge = new Metge(nombre, apellido1, apellido2, NSS, DNI, Integer.parseInt(numEmpleat), Integer.parseInt(salariMensual), codiCompteCorrent, Telefon, adreca);
                 //control.hospitalPrueba.afegirMetge(metge);
 //                Creacion.escriuMetge(metge);

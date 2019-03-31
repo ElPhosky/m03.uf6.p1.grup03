@@ -10,6 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 //import static m03.uf5.p01.grup03.gestiohospital.controlador.MenuControlador.control;
 import m03.uf5.p01.grup03.gestiohospital.modelo.Adreca;
+import m03.uf5.p01.grup03.gestiohospital.modelo.Conector;
 import m03.uf5.p01.grup03.gestiohospital.modelo.Creacion;
 import m03.uf5.p01.grup03.gestiohospital.modelo.Pacient;
 import m03.uf5.p01.grup03.gestiohospital.vista.*;
@@ -92,20 +93,10 @@ public class MenuAnyadirPacienteControlador extends Controlador {
             }
 
             if (temp) {
-                PreparedStatement ps = null;
-                GestorConexion objCon = new GestorConexion();
-                Connection conn = objCon.getConexion();
-                try {
-
-                    String sql = "INSERT INTO PacientHistorial(nif,telefon,nom,cognom1,cognom2,numSS,codiPostal,ciutat,carrer,numero,planta)VALUES"
+                String sql = "INSERT INTO PacientHistorial(nif,telefon,nom,cognom1,cognom2,numSS,codiPostal,ciutat,carrer,numero,planta)VALUES"
                             + "(\"" + DNI + "\",\"" + Telefon + "\",\"" + nombre + "\",\"" + apellido1 + "\",\"" + apellido2 + "\",\"" 
                             + NSS + "\",\"" + cp + "\",\"" + ciutat + "\",\"" + carrer + "\"," + numero + "," + planta + ");";
-                    System.out.println(sql);
-                    ps = conn.prepareStatement(sql);
-                    ps.execute();
-                } catch (SQLException ex) {
-                    Logger.getLogger(MenuAnyadirMetgeControlador.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                Conector.addPaciente(sql);
 
                 mAP.dispose();
 

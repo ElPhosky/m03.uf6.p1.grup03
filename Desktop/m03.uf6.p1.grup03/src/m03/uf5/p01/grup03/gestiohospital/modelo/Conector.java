@@ -118,6 +118,18 @@ public class Conector {
         }
     }
 
+    public static void addPaciente(String sql) {
+        PreparedStatement ps = null;
+        GestorConexion objCon = new GestorConexion();
+        Connection conn = objCon.getConexion();
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void getMetges() {
         Object[] filas = null;
         try {
@@ -145,6 +157,19 @@ public class Conector {
         } catch (SQLException ex) {
             Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public static void addMetge(String sql){
+            PreparedStatement ps = null;
+        GestorConexion objCon = new GestorConexion();
+        Connection conn = objCon.getConexion();
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     public Object[] getVisitas() {
