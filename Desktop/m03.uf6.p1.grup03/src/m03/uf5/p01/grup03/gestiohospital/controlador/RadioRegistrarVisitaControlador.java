@@ -1,16 +1,16 @@
 package m03.uf5.p01.grup03.gestiohospital.controlador;
 
 import java.awt.event.ActionEvent;
-import java.time.LocalDate;
+//import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import m03.uf5.p01.grup03.gestiohospital.modelo.Conector;
 //import static m03.uf5.p01.grup03.gestiohospital.controlador.MenuControlador.control;
-import m03.uf5.p01.grup03.gestiohospital.modelo.Malaltia;
-import m03.uf5.p01.grup03.gestiohospital.modelo.Metge;
-import m03.uf5.p01.grup03.gestiohospital.modelo.Pacient;
-import m03.uf5.p01.grup03.gestiohospital.modelo.Visita;
+//import m03.uf5.p01.grup03.gestiohospital.modelo.Malaltia;
+//import m03.uf5.p01.grup03.gestiohospital.modelo.Metge;
+//import m03.uf5.p01.grup03.gestiohospital.modelo.Pacient;
+//import m03.uf5.p01.grup03.gestiohospital.modelo.Visita;
 import m03.uf5.p01.grup03.gestiohospital.vista.IntroducirEnfermedad;
 import m03.uf5.p01.grup03.gestiohospital.vista.RadioRegistrarVisitaMedico;
 import m03.uf5.p01.grup03.gestiohospital.vista.RadioRegistrarVisitaPaciente;
@@ -21,11 +21,15 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
     private RadioRegistrarVisitaMedico radioMedico;
     private IntroducirEnfermedad introducirEnf;
 
-    private Metge metge;
+    private String codiHistorial = "";
+    private String numEmpleado = "";
+    private int codigoHistorial = 0;
+    private int numeroEmpleado = 0;
+    //private Metge metge;
     private int malaltia;
-    private Pacient pacient;
+    //private Pacient pacient;
     private LocalDateTime fecha;
-    private Visita visita;
+//    private Visita visita;
 
     public RadioRegistrarVisitaControlador() {
         inicializa();
@@ -49,10 +53,12 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
                 Pattern pat = Pattern.compile("\\d{8}[A-HJ-NP-TV-Z]");
                 Matcher mat = pat.matcher(texto);
                 if (mat.find()) {
-                    String codiHistorial = Conector.FindPacientDNI(texto).toString();
+                    codiHistorial = Conector.FindPacientDNI(texto)[0].toString();
+                    codigoHistorial = Integer.parseInt(Conector.FindPacientDNI(texto)[0].toString());
                     if (codiHistorial == null) {
                         radioPaciente.lblComprobar.setText("No está registrado.");
                     } else {
+                        codigoHistorial = Integer.parseInt(Conector.FindPacientDNI(texto)[0].toString());
                         radioMedico = new RadioRegistrarVisitaMedico(this);
                         radioMedico.setVisible(true);
                     }
@@ -67,7 +73,8 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
                 Pattern pat = Pattern.compile("(66|53|50|[0-4][0-9])-?\\d{8}-?\\d{2}");
                 Matcher mat = pat.matcher(texto);
                 if (mat.find()) {
-                    String codiHistorial = Conector.FindMetgenSS(texto).toString();
+                    codiHistorial = Conector.FindMetgenSS(texto)[0].toString();
+                    codigoHistorial = Integer.parseInt(Conector.FindMetgenSS(texto)[0].toString());
                     if (codiHistorial == null) {
                         radioPaciente.lblComprobar.setText("No está registrado.");
                     } else {
@@ -83,8 +90,9 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
             if (radioPaciente.radioHistorial.isSelected() == true) {
                 radioPaciente.lblComprobar.setText("OKKK");
                 try {
-                    
-                    String codiHistorial = Conector.FindMetgenumHistorial(texto).toString();
+
+                    codiHistorial = Conector.FindMetgenumHistorial(texto)[0].toString();
+                    codigoHistorial = Integer.parseInt(Conector.FindMetgenumHistorial(texto)[0].toString());
                     if (codiHistorial == null) {
                         radioPaciente.lblComprobar.setText("No está registrado.");
                     } else {
@@ -112,7 +120,8 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
                 Matcher mat = pat.matcher(texto);
                 if (mat.find()) {
                     radioMedico.lblComprobar.setText("OKKK");
-                    String numEmpleado = Conector.FindPacientDNI(texto).toString();
+                    numEmpleado = Conector.FindPacientDNI(texto)[0].toString();
+                    numeroEmpleado = Integer.parseInt(Conector.FindPacientDNI(texto)[0].toString());
                     if (numEmpleado == null) {
                         radioMedico.lblComprobar.setText("No está registrado.");
                     } else {
@@ -131,10 +140,13 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
                 Matcher mat = pat.matcher(texto);
                 if (mat.find()) {
                     radioMedico.lblComprobar.setText("OKKK");
-                    String numEmpleado = Conector.FindPacientnSS(texto).toString();
+                    numEmpleado = Conector.FindPacientnSS(texto)[0].toString();
+                    numeroEmpleado = Integer.parseInt(Conector.FindPacientnSS(texto)[0].toString());
+
                     if (numEmpleado == null) {
                         radioMedico.lblComprobar.setText("No está registrado.");
                     } else {
+
                         introducirEnf = new IntroducirEnfermedad(this);
                         introducirEnf.setVisible(true);
                     }
@@ -148,11 +160,14 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
             if (radioMedico.radioHistorial.isSelected() == true) {
                 radioMedico.lblComprobar.setText("OKKK");
                 try {
-                    String numEmpleado = Conector.FindPacientnumHistorial(texto).toString();
+                    numEmpleado = Conector.FindPacientnumHistorial(texto)[0].toString();
+                    
+                    numeroEmpleado = Integer.parseInt(Conector.FindPacientnumHistorial(texto)[0].toString());
+
                     if (numEmpleado == null) {
                         radioMedico.lblComprobar.setText("No está registrado.");
                     } else {
-                        
+
                         introducirEnf = new IntroducirEnfermedad(this);
                         introducirEnf.setVisible(true);
                     }
@@ -168,6 +183,7 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
         }
 
         //ID MALALTIA
+        try{
         if (e.getSource() == introducirEnf.btnAcceptar) {
             String texto = introducirEnf.tfID.getText();
             String enfermedad = "";
@@ -181,12 +197,16 @@ public class RadioRegistrarVisitaControlador extends Controlador { //CONTROLADOR
                 introducirEnf.lblComprobar.setText("No está registrado.");
             } else {
                 fecha = LocalDateTime.now();
-                String sql = "INSERT INTO visita("+fecha+","+malaltia+",codiHistorial,numEmpleado) VALUES(\"31/03/2019\",3,1,1);";
+                String sql = "INSERT INTO visita(fecha,codiMalaltia,codiHistorial,numEmpleado)VALUES(\"" + fecha + "\"," + malaltia + "," + codigoHistorial + "," + numeroEmpleado + ");";
+                Conector.addVisita(sql);
                 introducirEnf.lblComprobar.setText("Visita añadida correctamente.");
             }
         }
+    
         if (e.getSource() == introducirEnf.btnCancelar) {
             introducirEnf.dispose();
-        }
+        }}catch(NullPointerException nullpointer){
+        
+    }
     }
 }

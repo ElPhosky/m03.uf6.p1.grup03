@@ -448,4 +448,16 @@ public class Conector {
         }
         return filas;
     }
+     public static void addVisita(String sql) {
+        PreparedStatement ps = null;
+        GestorConexion objCon = new GestorConexion();
+        Connection conn = objCon.getConexion();
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 }
