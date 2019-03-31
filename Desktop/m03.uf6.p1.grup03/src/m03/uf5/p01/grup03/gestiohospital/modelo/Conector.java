@@ -21,9 +21,9 @@ import m03.uf5.p01.grup03.gestiohospital.controlador.GestorConexion;
  */
 public class Conector {
 
-    private PreparedStatement ps = null;
-    private ResultSet rs = null;
-    private GestorConexion conn = new GestorConexion();
+    private static PreparedStatement ps = null;
+    private static ResultSet rs = null;
+    private static GestorConexion conn = new GestorConexion();
     private static Conector conector = null;
 
     public static void main(String[] args) {
@@ -66,7 +66,7 @@ public class Conector {
         return false;
     }
 
-    public Object[] getResult(String consulta) {
+    public static Object[] getResult(String consulta) {
         Object[] filas = null;
         try {
 
@@ -130,7 +130,7 @@ public class Conector {
         }
     }
 
-    public void getMetges() {
+    public static void getMetges() {
         Object[] filas = null;
         try {
 
@@ -172,7 +172,7 @@ public class Conector {
         
     }
 
-    public Object[] getVisitas() {
+    public static Object[] getVisitas() {
         Object[] filas = null;
         try {
 
@@ -199,7 +199,7 @@ public class Conector {
         return filas;
     }
 
-    public Object[] getMalalties() {
+    public static Object[] getMalalties() {
         Object[] filas = null;
         try {
 
@@ -227,7 +227,7 @@ public class Conector {
         return filas;
     }
 
-    public Object[] FindPacientDNI(String dni) {
+    public static  Object[] FindPacientDNI(String dni) {
         Object[] filas = null;
         try {
 
@@ -254,7 +254,7 @@ public class Conector {
         return filas;
     }
 
-    public Object[] FindMetgeDNI(String dni) {
+    public static Object[] FindMetgeDNI(String dni) {
         Object[] filas = null;
         try {
 
@@ -281,7 +281,7 @@ public class Conector {
         return filas;
     }
 
-    public Object[] FindPacientnSS(String nSS) {
+    public static Object[] FindPacientnSS(String nSS) {
         Object[] filas = null;
         try {
 
@@ -308,7 +308,7 @@ public class Conector {
         return filas;
     }
 
-    public Object[] FindMetgenSS(String nSS) {
+    public static Object[] FindMetgenSS(String nSS) {
         Object[] filas = null;
         try {
 
@@ -335,7 +335,7 @@ public class Conector {
         return filas;
     }
 
-    public Object[] FindPacientnumHistorial(String historial) {
+    public static Object[] FindPacientnumHistorial(String historial) {
         Object[] filas = null;
         try {
 
@@ -362,7 +362,7 @@ public class Conector {
         return filas;
     }
 
-    public Object[] FindMetgenumHistorial(String numEmpleado) {
+    public static Object[] FindMetgenumHistorial(String numEmpleado) {
         Object[] filas = null;
         try {
 
@@ -389,7 +389,7 @@ public class Conector {
         return filas;
     }
 
-    public Object[] MostraHistorial() {
+    public static Object[] MostraHistorial() {
         Object[] filas = null;
         try {
 
