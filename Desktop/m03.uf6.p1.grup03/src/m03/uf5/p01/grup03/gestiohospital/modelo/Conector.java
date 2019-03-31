@@ -37,8 +37,9 @@ public class Conector {
 //        conector.FindPacientnumHistorial("2");
 //        conector.FindMetgeDNI("47740739Y");
 //        conector.FindMetgenSS("11134567890");
-//        conector.FindMetgenumHistorial("1");
-        conector.MostraHistorial();
+        System.out.println(conector.FindMetgenumHistorial("1"));
+//        System.out.println((conector.FindMalaltia(1).toString()));
+//        conector.MostraHistorial();
 
     }
 
@@ -158,9 +159,9 @@ public class Conector {
             Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public static void addMetge(String sql){
-            PreparedStatement ps = null;
+
+    public static void addMetge(String sql) {
+        PreparedStatement ps = null;
         GestorConexion objCon = new GestorConexion();
         Connection conn = objCon.getConexion();
         try {
@@ -169,7 +170,7 @@ public class Conector {
         } catch (SQLException ex) {
             Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     public static Object[] getVisitas() {
@@ -199,12 +200,14 @@ public class Conector {
         return filas;
     }
 
+   
+
     public static Object[] getMalalties() {
         Object[] filas = null;
         try {
 
             Connection con = conn.getConexion();
-            String sql = "SELECT codiMalaltia,nomMalaltia,causaBaixa,tractament,duradaTractament FROM malaltia";
+            String sql = "SELECT nomMalaltia,causaBaixa,tractament,duradaTractament FROM malaltia";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -227,12 +230,12 @@ public class Conector {
         return filas;
     }
 
-    public static  Object[] FindPacientDNI(String dni) {
+    public static Object[] FindPacientDNI(String dni) {
         Object[] filas = null;
         try {
 
             Connection con = conn.getConexion();
-            String sql = "SELECT nif FROM pacientHistorial WHERE nif = '" + dni + "'";
+            String sql = "SELECT codiHistorial FROM pacientHistorial WHERE nif = '" + dni + "'";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -259,7 +262,7 @@ public class Conector {
         try {
 
             Connection con = conn.getConexion();
-            String sql = "SELECT nif FROM metge WHERE nif = '" + dni + "'";
+            String sql = "SELECT numEmpleado FROM metge WHERE nif = '" + dni + "'";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -286,7 +289,7 @@ public class Conector {
         try {
 
             Connection con = conn.getConexion();
-            String sql = "SELECT nif FROM pacientHistorial WHERE numSS = '" + nSS + "'";
+            String sql = "SELECT codiHistorial FROM pacientHistorial WHERE numSS = '" + nSS + "'";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -313,7 +316,7 @@ public class Conector {
         try {
 
             Connection con = conn.getConexion();
-            String sql = "SELECT nif FROM metge WHERE numSS = '" + nSS + "'";
+            String sql = "SELECT numEmpleado FROM metge WHERE numSS = '" + nSS + "'";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -340,7 +343,7 @@ public class Conector {
         try {
 
             Connection con = conn.getConexion();
-            String sql = "SELECT nif FROM pacientHistorial WHERE codiHistorial = '" + historial + "'";
+            String sql = "SELECT codiHistorial FROM pacientHistorial WHERE codiHistorial = '" + historial + "'";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -367,7 +370,7 @@ public class Conector {
         try {
 
             Connection con = conn.getConexion();
-            String sql = "SELECT nif FROM metge WHERE numEmpleado = '" + numEmpleado + "'";
+            String sql = "SELECT numEmpleado FROM metge WHERE numEmpleado = '" + numEmpleado + "'";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -398,6 +401,33 @@ public class Conector {
                     + "INNER JOIN pacientHistorial on visita.codiHistorial = pacientHistorial.codiHistorial "
                     + "INNER JOIN malaltia on visita.codiMalaltia = malaltia.codiMalaltia "
                     + "INNER JOIN metge on visita.numEmpleado = metge.numEmpleado";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            ResultSetMetaData rsMd = rs.getMetaData();
+            int cantidadColumnas = rsMd.getColumnCount();
+
+            while (rs.next()) {
+                filas = new Object[cantidadColumnas];
+
+                for (int i = 0; i < cantidadColumnas; i++) {
+                    filas[i] = rs.getObject(i + 1);
+                    System.out.println(filas[i]);
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return filas;
+    }
+
+    public static Object[] FindMalaltia(int id) {
+        Object[] filas = null;
+        try {
+
+            Connection con = conn.getConexion();
+            String sql = "SELECT nomMalaltia FROM malaltia WHERE codiMalaltia = '" + id + "'";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
