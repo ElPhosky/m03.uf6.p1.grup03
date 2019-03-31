@@ -1,8 +1,10 @@
 DROP DATABASE IF EXISTS gestiohospital;
 CREATE DATABASE gestiohospital;
-DROP USER IF EXISTS CapAdmin;
-CREATE USER CapAdmin IDENTIFIED BY 'CapPass';
-GRANT ALL PRIVILEGES ON CAP.* TO CapAdmin WITH GRANT OPTION;
+DROP USER IF EXISTS admin_hospital_grup3;
+DROP USER IF EXISTS usuari_hospital_grup3;
+CREATE USER admin_hospital_grup3 IDENTIFIED BY 'admin';
+GRANT ALL PRIVILEGES ON CAP.* TO admin_hospital_grup3 WITH GRANT OPTION;
+CREATE USER usuari_hospital_grup3 IDENTIFIED BY 'usuari';
 USE gestiohospital;
 
 CREATE TABLE malaltia(
@@ -74,6 +76,17 @@ INSERT INTO PacientHistorial(nif,telefon,nom,cognom1,cognom2,numSS,codiPostal,ci
 
 INSERT INTO visita(fecha,codiMalaltia,codiHistorial,nifMetge) VALUES("30/03/2019",3,1,"47840738L");
 
+DELIMITER //
+CREATE PROCEDURE test()
+BEGIN
+    DECLARE z INT;
+    SET z=1;
+	SELECT z;
+END //
+delimiter ;
+
+
+    
 SELECT * FROM malaltia;
 SELECT * FROM metge;
 SELECT * FROM PacientHistorial;
