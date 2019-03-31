@@ -87,7 +87,7 @@ public class Conector {
         return filas;
     }
 
-    public Object[] getPacientes() {
+    public void getPacientes() {
         Object[] filas = null;
         try {
 
@@ -105,12 +105,12 @@ public class Conector {
                 for (int i = 0; i < cantidadColumnas; i++) {
                     filas[i] = rs.getObject(i + 1);
                 }
+                m03.uf5.p01.grup03.gestiohospital.vista.Pacient.addRow(filas);
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(Conector.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return filas;
     }
 
     public void getMetges() {
@@ -188,6 +188,7 @@ public class Conector {
                     filas[i] = rs.getObject(i + 1);
                     System.out.println(filas[i]);
                 }
+                m03.uf5.p01.grup03.gestiohospital.vista.Enfermedad.addRow(filas);
             }
 
         } catch (SQLException ex) {

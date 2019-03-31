@@ -67,7 +67,7 @@ public class MenuControlador extends Controlador{
                 new Metge().setVisible(true); 
         }
         if(ae.getSource() == m.btnBuscarEnfermedad){
-            bEC = new BuscarEnfermedadControlador();
+                new Enfermedad().setVisible(true); 
         }
     }
 }

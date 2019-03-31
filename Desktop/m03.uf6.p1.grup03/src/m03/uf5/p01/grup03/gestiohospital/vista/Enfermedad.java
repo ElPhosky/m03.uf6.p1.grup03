@@ -9,24 +9,22 @@ import javax.swing.table.DefaultTableModel;
 import m03.uf5.p01.grup03.gestiohospital.controlador.GestorConexion;
 import m03.uf5.p01.grup03.gestiohospital.modelo.Conector;
 
-public class Pacient extends javax.swing.JFrame {
+public class Enfermedad extends javax.swing.JFrame {
 
     static DefaultTableModel modelo = null;
     
-    public Pacient() {
+    public Enfermedad() {
         initComponents();
         modelo = new DefaultTableModel();
         codiHistorial.setModel(modelo);
             
-        modelo.addColumn("Nom");
-        modelo.addColumn("Cognom");
-        modelo.addColumn("2n cognom");
-        modelo.addColumn("Num SS");
-        modelo.addColumn("Codi Postal");
-        modelo.addColumn("NIF");
-                
+        modelo.addColumn("Nom malaltia");
+        modelo.addColumn("Causa baixa");
+        modelo.addColumn("Tractament");
+        modelo.addColumn("Durada tractament");
+        
         Conector conecta = Conector.getConector();
-        conecta.getPacientes();
+        conecta.getMalalties();
     }
     
     public static void addRow(Object[] filas){
@@ -49,20 +47,20 @@ public class Pacient extends javax.swing.JFrame {
 
         codiHistorial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nom Pacient", "Cognom", "2n cognom", "Núm SS", "Codi Postal", "NIF"
+                "Nom malatia", "Causa baixa", "Tractament", "Durada tractament"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {

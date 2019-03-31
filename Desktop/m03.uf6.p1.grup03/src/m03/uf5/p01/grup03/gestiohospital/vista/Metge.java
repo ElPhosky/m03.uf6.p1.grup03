@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package m03.uf5.p01.grup03.gestiohospital.vista;
 
 import java.sql.Connection;
@@ -14,10 +9,6 @@ import javax.swing.table.DefaultTableModel;
 import m03.uf5.p01.grup03.gestiohospital.controlador.GestorConexion;
 import m03.uf5.p01.grup03.gestiohospital.modelo.Conector;
 
-/**
- *
- * @author Rafa
- */
 public class Metge extends javax.swing.JFrame {
 
     static DefaultTableModel modelo = null;
