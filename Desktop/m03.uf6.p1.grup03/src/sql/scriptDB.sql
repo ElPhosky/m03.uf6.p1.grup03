@@ -63,9 +63,9 @@ ALTER TABLE VISITA ADD CONSTRAINT fk_PACIENT_codiHistorialPacient FOREIGN KEY (c
 				   ADD CONSTRAINT fk_PACIENT_numEmpleado FOREIGN KEY (numEmpleado) REFERENCES metge(numEmpleado) ON DELETE SET NULL,
                    ADD CONSTRAINT fk_PACIENT_codiMalaltia FOREIGN KEY (codiMalaltia) REFERENCES malaltia(codiMalaltia) ON DELETE SET NULL;
 
-INSERT INTO malaltia(nomMalaltia,causaBaixa,tractament,duradaTractament) VALUES("resfriao",false,"Unas orikas en cama y como nuevo","2 dias");
-INSERT INTO malaltia(nomMalaltia,causaBaixa,tractament,duradaTractament) VALUES("Esquizofrenia",true,"Xungo lo veo","5 dias");
-INSERT INTO malaltia(nomMalaltia,causaBaixa,tractament,duradaTractament) VALUES("Me desmayo", true,"Pastillas y ya","-");
+INSERT INTO malaltia(nomMalaltia,causaBaixa,tractament,duradaTractament) VALUES("Resfriado",false,"Kebab pal pexo","2 dias");
+INSERT INTO malaltia(nomMalaltia,causaBaixa,tractament,duradaTractament) VALUES("Esquizofrenia",true,"R1P","5 dias");
+INSERT INTO malaltia(nomMalaltia,causaBaixa,tractament,duradaTractament) VALUES("Fiebre", true,"Dalsi","-");
 
 INSERT INTO metge VALUES("47840738L","935880478","Rafa","Gonzalez","Seliva","111234567890","08191","Terrassa","C encantao",0,5,"ES10000","1","1200");
 INSERT INTO metge VALUES("47843738L","933880478","Kevin","Sanchez","Gonzalez","11134567890","08191","Terrassa","C tontin",2,2,"ES1000023","2","1300");
